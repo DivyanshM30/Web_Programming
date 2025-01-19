@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lab exercise 23BCE1128</title>
+</head>
+
+<body>
+<form>
+<fieldset width="50%">
+<legend align="top" style="color:red"><b>Personal details</b></legend>
+<table>
+
+<tr>
+<td width="100px">Name</td>
+<td>: <input type="text" name="Name" id="name"></td>
+</tr>
+
+<tr>
+<td width="100px">Password</td>
+<td>: <input type="Password" name="Password" id="pass"></td>
+</tr>
+
+<tr>
+<td width="100px">Gender</td>
+<td>: <input type="radio" name="male" id="male" value="male"> Male  <input type="radio" name="female" id="female" value="female" checked="true"> Female</td>
+</tr>
+
+<tr>
+<td width="100px">DOB</td>
+<td>: <input type="date" name="dob" id="dob"></td>
+</tr>
+
+<tr>
+<td width="100px">Mobile#</td>
+<td>: <input type="tel" name="telephone" id="telephone"></td>
+</tr>
+
+</table>
+</fieldset>
+</form>
+
+
+
+
+<form>
+<fieldset width="50%">
+<legend align="top" style="color:red"><b>Educational Qualification</b></legend>
+<table>
+
+<tr>
+<td width="100px">Degree</td>
+<td>: 
+<select id="degree" width="200px">
+    <optgroup label="UG">
+	<option value="BE">BE
+	<option value="BTech">BTech
+	<option value="BSc">BSc
+	<option value="BA">BA
+	<option value="BCA">BCA
+	<option value="BBA">BBA
+	<option value="Others">Others
+	</optgroup>
+	
+	<optgroup label="PG">
+	<option value="ME">ME
+	<option value="MTech">MTech
+	<option value="MSc">MSc
+	<option value="MA">MA
+	<option value="MCA">MCA
+	<option value="MBA">MBA
+	<option value="Others">Others
+	</optgroup>
+	
+	
+	<optgroup label="PhD">
+	<option value="Engineering">Engineering
+	<option value="Science">Science
+	<option value="Management">Management
+	<option value="Others">Others
+	</optgroup>
+	
+	<option value="--Select Group--" selected disabled hidden>--Select Group--
+</select>
+</td>
+
+<td>Engineering:</td>
+<td>
+<input list="deps" name="dep" id="dep" placeholder="--Select Group--">
+  <datalist id="deps">
+    <option value="CSE">
+    <option value="ECE">
+    <option value="EEE">
+    <option value="CIVIL">
+    <option value="MECH">
+  </datalist>
+</td>
+</tr>
+</table>
+</fieldset>
+</form>
+
+<form>
+<table>
+<tr>
+<td width="100px">Hobbies</td>
+<td>: <input type="checkbox" id="Playing chess">Playing Chess</td>
+<td><input type="checkbox" id="Reading books">Reading Books</td>
+<tr/>
+<tr><td colspan="3">Favoutrite Color&nbsp: <input type="color"><td></tr>
+</table>
+
+</form>
+
+<form>
+<p style="color:red"><b>Address</b></p>
+<textarea name="address" rows="5" cols="50"></textarea>
+<br>
+Attach Resume: <input type="file" name="resume" id="resume"> <input type="submit">
+</form>
+
+</body>
+
+</html>
