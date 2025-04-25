@@ -1,0 +1,56 @@
+body {
+    background-image: url('image.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.rainbow {
+    text-align: center;
+    font-size: 32px;
+    color: violet;
+    animation: rainbow 3s infinite;
+}
+
+@keyframes rainbow {
+    0% { color: red; }
+    20% { color: orange; }
+    40% { color: yellow; }
+    60% { color: green; }
+    80% { color: blue; }
+    100% { color: violet; }
+}
+
+.description {
+    column-count: 2;
+    line-height: 30pt;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    margin: 20px;
+}
+
+.play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 30px;
+}
+
+/* Dog image */
+.dog {
+    width: 400px;
+}
+
+/* Ball animation */
+.ball {
+    animation: moveBall 2s infinite alternate;
+}
+
+@keyframes moveBall {
+    0% {
+        transform: translateX(0) rotate(0deg);
+    }
+    100% {
+        transform: translateX(100px) rotate(360deg) skewX(20deg);
+    }
+}

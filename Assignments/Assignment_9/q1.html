@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New York Temperature Analysis</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>New York Temperature Analysis</h1>
+    <table id="temperatureTable">
+        <tr>
+            <th>Day</th>
+            <th>Temperature (°F)</th>
+            <th>Category</th>
+        </tr>
+    </table>
+    <p id="summary"></p>
+
+    <script>
+        const temperatures = [55,62,68,74,59,45,41,58,60,67,65,78,82,88,91,92,90,93,87,80,78,79,72,68,61,59,55,65];
+        let hotDays = 0;
+        let pleasantDays = 0;
+        let coldDays = 0;
+
+        const table = document.getElementById("temperatureTable");
+
+        temperatures.forEach((temp, index) => {
+            let category;
+            if (temp >= 85) {
+                category = "HOT";
+                hotDays++;
+            } else if (temp >= 60 && temp <= 84) {
+                category = "Pleasant";
+                pleasantDays++;
+            } else {
+                category = "COLD";
+                coldDays++;
+            }
+
+            const row = table.insertRow();
+            row.innerHTML = `<td>Day ${index + 1}</td><td>${temp}</td><td>${category}</td>`;
+        });
+
+        document.getElementById("summary").innerHTML = 
+            `Number of HOT days: ${hotDays} <br>
+             Number of Pleasant days: ${pleasantDays} <br>
+             Number of COLD days: ${coldDays}`;
+    </script>
+</body>
+</html>

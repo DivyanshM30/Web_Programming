@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Airline Reservation System</title>
+</head>
+<body>
+    <h1>Airline Reservation System</h1>
+    <label for="name">Enter your name:</label>
+    <input type="text" id="name" required>
+    <br><br>
+    <label>Select Class:</label>
+    <button onclick="bookSeat(1)">First Class (1-5)</button>
+    <button onclick="bookSeat(2)">Economy (6-10)</button>
+    <br><br>
+    <p id="message"></p>
+    <h2>Seating Chart:</h2>
+    <ul id="seatingChart"></ul>
+
+    <script>
+        const seats = Array(10).fill(0);
+
+        function displaySeatingChart() {
+            const chart = document.getElementById("seatingChart");
+            chart.innerHTML = '';
+            seats.forEach((status, index) => {
+                const seatStatus = status === 0 ? 'Empty' : 'Booked';
+                chart.innerHTML += `<li>Seat ${index + 1}: ${seatStatus}</li>`;
+            });
+        }
+
+        function bookSeat(classType) {
+            const name = document.getElementById("name").value.trim();
+            if (name === '') {
+                alert("Please enter your name.");
+                return;
+            }
+
+            let start, end;
+            if (classType === 1) {
+                start = 0;
+                end = 5;
+            } else if (classType === 2) {
+                start = 5;
+                end = 10;
+            }
+
+            for (let i = start; i < end; i++) {
+                if (seats[i] === 0) {
+                    seats[i] = 1;
+                    document.getElementById("message").innerHTML = 
+                        `Boarding Pass:<br> Name: ${name} <br> Seat Number: ${i + 1} <br> Class: ${classType === 1 ? 'First Class' : 'Economy'}`;
+                    displaySeatingChart();
+                    return;
+                }
+            }
+
+            if (classType === 1) {
+                if (confirm("First Class is full. Would you like to be placed in Economy?")) {
+                    bookSeat(2);
+                } else {
+                    alert("Sorry! No more first class seats available.");
+                }
+            } else if (classType === 2) {
+                if (confirm("Economy is full. Would you like to be placed in First Class?")) {
+                    bookSeat(1);
+                } else {
+                    alert("Sorry! No more economy seats available.");
+                }
+            }
+        }
+
+        displaySeatingChart();
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+.table1 {
+	background-color: rgb(156, 210, 232);
+	width: 400px;
+	padding: 20px;
+	text-align: center;
+	height: 400px;
+	border-radius: 0px;
+}
+
+td {
+	border-radius: 10px;
+}
+
+.clear {
+	background-color: pink;
+	border-bottom: rgb(255, 122, 137) solid 4px;
+	color: white;
+	border-bottom: gray solid 4px;
+}
+
+.clear:hover {
+	background-color: red;
+	color: white;
+}
+
+.space {
+	background-color: rgb(123, 167, 189);
+	box-shadow: 0px -5px grey;
+}
+
+.character {
+	background-color: rgb(255, 255, 255);
+	border-bottom: gray solid 4px;
+}
+
+.one:hover {
+	background-color: blue;
+}
+
+.character:hover {
+	background-color: grey;
+}
+
+.operator:hover {
+	background-color: pink;
+}
+
+#one:hover {
+	background-color: blue;
+}
+
+#one {
+	background-color: rgb(157, 138, 243);
+	color: white;
+	border-bottom: rgb(105, 82, 205) solid 4px;
+
+}
+
+.operator {
+	background-color: rgb(255, 240, 244);
+	border-bottom: gray solid 4px;
+}
+
+.equals {
+	background-color: rgb(241, 254, 154);
+	border-bottom: rgb(156, 164, 87) solid 4px;
+}
+
+.equals:hover {
+	background-color: rgb(90, 94, 50);
+}
+
+.space:hover {
+	background-color: blue;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Receipt</title>
+    <style>
+      body {
+        background-color: #a0a98c;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .receipt {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        width: 300px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      h2 {
+        text-align: center;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      ul li {
+        margin-bottom: 10px;
+      }
+      .total-price {
+        font-weight: bold;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="receipt">
+      <h2>Order Receipt</h2>
+      <ul>
+        <li>Customer Name: <span id="customerName"></span></li>
+        <li>Phone Number: <span id="phoneNumber"></span></li>
+        <li>Email: <span id="email"></span></li>
+      </ul>
+      <h3>Products Ordered:</h3>
+      <ul>
+        <li>Apple: <span id="appleQty">0 kg</span></li>
+        <li>Banana: <span id="bananaQty">0 kg</span></li>
+        <li>Avocado: <span id="avocadoQty">0 kg</span></li>
+      </ul>
+      <h3 class="total-price">Total Price: $<span id="totalPrice">0</span></h3>
+    </div>
+    <script>
+      const order = JSON.parse(localStorage.getItem("order"));
+      document.getElementById("customerName").textContent = order.customerName;
+      document.getElementById("phoneNumber").textContent = order.phoneNumber;
+      document.getElementById("email").textContent = order.email;
+      document.getElementById("appleQty").textContent = order.apple + " kg";
+      document.getElementById("bananaQty").textContent = order.banana + " kg";
+      document.getElementById("avocadoQty").textContent = order.avocado + " kg";
+      document.getElementById("totalPrice").textContent = order.totalPrice;
+    </script>
+  </body>
+</html>

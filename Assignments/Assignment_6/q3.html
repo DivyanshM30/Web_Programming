@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style type="text/css">
+        .img {
+            border-radius: 50%;
+            height: 150px;
+            width: 150px;
+            border: 2px solid green;
+        }
+
+        .styledtext {
+            animation-name: textanim;
+            animation-duration: 4s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes textanim {
+            0% {
+                font-size: 14px;
+                color: red;
+            }
+
+            20% {
+                font-size: 18px;
+                color: yellow;
+            }
+
+            40% {
+                font-size: 22px;
+                color: blue;
+            }
+
+            60% {
+                font-size: 26px;
+                color: brown;
+            }
+
+            80% {
+                font-size: 30px;
+                color: green;
+            }
+
+            100% {
+                font-size: 34px;
+                color: orange;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <figure>
+            <img src="bill.jpeg" class="img" title="Fig 1. Bill Withers" />
+            <figcaption><span class="styledtext">Fig 1. Bill Withers</span></figcaption>
+        </figure>
+    </center>
+</body>
+
+</html>

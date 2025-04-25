@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Tasks</title>
+    <style>
+        #myButton {
+            background-color: red;
+            color: white;
+            padding: 10px;
+        }
+
+        #myTextbox {
+            background-color: green;
+            padding: 5px;
+        }
+
+        #keypressCounter {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>JavaScript Dynamic Tasks</h2>
+
+    <!-- (i) Dynamic 3x3 Table -->
+    <div id="tableContainer"></div>
+    <br>
+
+    <!-- (ii) Dynamic Button -->
+    <div id="buttonContainer"></div>
+    <br>
+
+    <!-- (iii) Dynamic Textbox -->
+    <div id="textboxContainer"></div>
+    <br>
+
+    <!-- (iv) Add li on double click -->
+    <input type="text" id="liInput">
+    <button id="addLiBtn">Add to List</button>
+    <ul id="myList"></ul>
+    <br>
+
+    <!-- (v) Keypress Counter -->
+    <input type="text" id="keyInput" placeholder="Type here">
+    <input type="text" id="keyCountDisplay" readonly>
+    
+    <script>
+        // (i) Create a 3x3 dynamic table
+        let table = document.createElement("table");
+        table.border = "1";
+        for (let i = 0; i < 3; i++) {
+            let row = table.insertRow();
+            for (let j = 0; j < 3; j++) {
+                let cell = row.insertCell();
+                cell.innerHTML = `Row ${i + 1}, Col ${j + 1}`;
+            }
+        }
+        document.getElementById("tableContainer").appendChild(table);
+
+        // (ii) Button with Mouse Over Color Change
+        let btn = document.createElement("button");
+        btn.id = "myButton";
+        btn.textContent = "Hover me!";
+        btn.onmouseover = function () {
+            btn.style.backgroundColor = "green";
+        }
+        btn.onmouseout = function () {
+            btn.style.backgroundColor = "red";
+        }
+        document.getElementById("buttonContainer").appendChild(btn);
+
+        // (iii) Textbox Focus & Change
+        let textbox = document.createElement("input");
+        textbox.type = "text";
+        textbox.id = "myTextbox";
+
+        textbox.onfocus = function () {
+            textbox.style.backgroundColor = "yellow";
+        }
+
+        textbox.onchange = function () {
+            alert("Hello! You typed: " + textbox.value);
+        }
+
+        document.getElementById("textboxContainer").appendChild(textbox);
+
+        // (iv) Add <li> item to <ul> on double click
+        document.getElementById("addLiBtn").ondblclick = function () {
+            let text = document.getElementById("liInput").value;
+            if (text.trim() !== "") {
+                let li = document.createElement("li");
+                li.textContent = text;
+                document.getElementById("myList").appendChild(li);
+                document.getElementById("liInput").value = ""; // clear input
+            }
+        }
+
+        // (v) Count key presses
+        let keyCount = 0;
+        document.getElementById("keyInput").onkeydown = function () {
+            keyCount++;
+            document.getElementById("keyCountDisplay").value = keyCount;
+        }
+    </script>
+
+</body>
+</html>

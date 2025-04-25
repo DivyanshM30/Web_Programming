@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z-Index Manipulation Demo</title>
+    <style>
+        .container {
+            position: relative;
+            width: 500px;
+            height: 400px;
+            margin: 50px auto;
+            border: 1px solid #ccc;
+        }
+        
+        .box {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            border: 3px solid black;
+        }
+        
+        #box1 {
+            background-color: rgba(255, 0, 0, 0.7);
+            top: 50px;
+            left: 50px;
+            z-index: 1;
+        }
+        
+        #box2 {
+            background-color: rgba(0, 255, 0, 0.7);
+            top: 100px;
+            left: 150px;
+            z-index: 2;
+        }
+        
+        #box3 {
+            background-color: rgba(0, 0, 255, 0.7);
+            top: 150px;
+            left: 250px;
+            z-index: 3;
+        }
+        
+        .controls {
+            margin: 20px auto;
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .box-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div id="box1" class="box">Box 1<br>z-index: <span class="z-value">1</span></div>
+        <div id="box2" class="box">Box 2<br>z-index: <span class="z-value">2</span></div>
+        <div id="box3" class="box">Box 3<br>z-index: <span class="z-value">3</span></div>
+    </div>
+    
+    <div class="controls">
+        <div class="box-control">
+            <span style="width: 80px;">Box 1:</span>
+            <button onclick="decreaseZIndex('box1')">-</button>
+            <input type="number" id="box1-z-index" value="1" min="-10" max="10" onchange="updateZIndex('box1', this.value)">
+            <button onclick="increaseZIndex('box1')">+</button>
+            <button onclick="bringToFront('box1')">Bring to Front</button>
+            <button onclick="sendToBack('box1')">Send to Back</button>
+        </div>
+        
+        <div class="box-control">
+            <span style="width: 80px;">Box 2:</span>
+            <button onclick="decreaseZIndex('box2')">-</button>
+            <input type="number" id="box2-z-index" value="2" min="-10" max="10" onchange="updateZIndex('box2', this.value)">
+            <button onclick="increaseZIndex('box2')">+</button>
+            <button onclick="bringToFront('box2')">Bring to Front</button>
+            <button onclick="sendToBack('box2')">Send to Back</button>
+        </div>
+        
+        <div class="box-control">
+            <span style="width: 80px;">Box 3:</span>
+            <button onclick="decreaseZIndex('box3')">-</button>
+            <input type="number" id="box3-z-index" value="3" min="-10" max="10" onchange="updateZIndex('box3', this.value)">
+            <button onclick="increaseZIndex('box3')">+</button>
+            <button onclick="bringToFront('box3')">Bring to Front</button>
+            <button onclick="sendToBack('box3')">Send to Back</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

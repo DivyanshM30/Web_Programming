@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Calculator</title>
+    <script>
+        function calculate() {
+            let num1 = prompt("Enter the first number:");
+            let num2 = prompt("Enter the second number:");
+
+            num1 = parseFloat(num1) || 0;
+            num2 = parseFloat(num2) || 0;
+
+            let sum = num1 + num2;
+            let difference = num1 - num2;
+            let product = num1 * num2;
+            let quotient = num2 !== 0 ? (num1 / num2).toFixed(2) : "Undefined (Cannot divide by zero)";
+            let remainder = num2 !== 0 ? num1 % num2 : "Undefined";
+
+            alert("Addition: " + sum +
+                "\nSubtraction: " + difference +
+                "\nMultiplication: " + product +
+                "\nDivision: " + quotient +
+                "\nModulus: " + remainder);
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Basic Calculator</h2>
+    <button onclick="calculate()">Calculate</button>
+
+</body>
+</html>

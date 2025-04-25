@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Confirmation</title>
+    <script>
+        function getRegistrationNumber() {
+            let isStudent = confirm("Are you a student?");
+            
+            if (isStudent) {
+                let regNo = prompt("Enter your Registration Number:");
+                
+                if (regNo) {
+                    alert("Your Registration Number: " + regNo);
+                } else {
+                    alert("Registration number cannot be empty.");
+                }
+            } else {
+                alert("You must be a student to proceed.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Student Registration</h2>
+    <button onclick="getRegistrationNumber()">Enter Registration Number</button>
+
+</body>
+</html>

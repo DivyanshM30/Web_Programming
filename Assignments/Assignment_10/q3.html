@@ -1,0 +1,140 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Grocery Order Form</title> 
+    <style> 
+        body { 
+            background-color: #a0a98c; 
+            font-family: Arial, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        } 
+        .order-form { 
+            background-color: #7a8466; 
+            border-radius: 10px; 
+            padding: 20px; 
+            width: 350px; 
+            color: #fff; 
+        } 
+        h2 { 
+            text-align: center; 
+        } 
+        input[type="text"] { 
+            width: 100%; 
+            padding: 5px; 
+            margin: 10px 0; 
+            border-radius: 5px; 
+            border: none; 
+        } 
+        .product { 
+            display: flex; 
+            align-items: center; 
+            margin: 10px 0; 
+        } 
+        .product img { 
+            width: 40px; 
+            height: 40px; 
+            border-radius: 50%; 
+            margin-right: 10px; 
+        } 
+        .product label { 
+            flex-grow: 1; 
+        } 
+        .product input[type="number"] { 
+            width: 50px; 
+            margin-left: 5px; 
+        } 
+        .submit-btn { 
+            background-color: #a67d4e; 
+            color: white; 
+            border: none; 
+            padding: 10px; 
+            width: 100%; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <form class="order-form" onsubmit="saveOrderData(event)"> 
+        <h2>Grocery Order Form</h2> 
+        <input type="text" name="customerName" placeholder="Customer Name" 
+required> 
+        <input type="text" name="phoneNumber" placeholder="Phone Number" 
+required> 
+        <input type="text" name="email" placeholder="Email" required> 
+        <h3>Products</h3> 
+        <div class="product"> 
+            <img src="apple.png" alt="Apple"> 
+            <input type="checkbox" name="apple"> 
+            <label>Apple $10</label> 
+            <input type="number" name="appleQty" min="0" placeholder="kg"> 
+        </div> 
+        <div class="product"> 
+            <img src="banana.png" alt="Banana"> 
+            <input type="checkbox" name="banana"> 
+            <label>Banana $5</label> 
+            <input type="number" name="bananaQty" min="0" placeholder="kg"> 
+        </div> 
+        <div class="product"> 
+            <img src="avacado.png" alt="Avocado"> 
+            <input type="checkbox" name="avocado"> 
+            <label>Avocado $7</label> 
+            <input type="number" name="avocadoQty" min="0" placeholder="kg"> 
+        </div> 
+        <button type="submit" class="submit-btn">SUBMIT</button> 
+    </form> 
+ 
+    <script> 
+        function saveOrderData(event) { 
+            event.preventDefault(); 
+ 
+            const customerName = 
+document.querySelector('input[name="customerName"]').value; 
+            const phoneNumber = 
+document.querySelector('input[name="phoneNumber"]').value; 
+            const email = document.querySelector('input[name="email"]').value; 
+ 
+            // Product prices 
+            const prices = { 
+                apple: 10, 
+                banana: 5, 
+                avocado: 7 
+            }; 
+ 
+            // Get selected products and quantities 
+            const appleQty = 
+document.querySelector('input[name="apple"]').checked ? 
+parseInt(document.querySelector('input[name="appleQty"]').value) || 0 : 0; 
+            const bananaQty = 
+document.querySelector('input[name="banana"]').checked ? 
+parseInt(document.querySelector('input[name="bananaQty"]').value) || 0 : 0; 
+            const avocadoQty = 
+document.querySelector('input[name="avocado"]').checked ? 
+parseInt(document.querySelector('input[name="avocadoQty"]').value) || 0 : 0; 
+ 
+            // Calculate total price 
+            const totalPrice = (appleQty * prices.apple) + (bananaQty * 
+prices.banana) + (avocadoQty * prices.avocado); 
+ 
+            const order = { 
+                customerName, 
+                phoneNumber, 
+                email, 
+                apple: appleQty, 
+                banana: bananaQty, 
+                avocado: avocadoQty, 
+                totalPrice // Store total price 
+            }; 
+ 
+            localStorage.setItem('order', JSON.stringify(order)); 
+            window.location.href = 'receipt.html'; 
+        } 
+    </script> 
+</body> 
+</html> 

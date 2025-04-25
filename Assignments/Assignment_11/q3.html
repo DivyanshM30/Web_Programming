@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Form Validation</title>
+  <style>
+    .error { color: red; font-size: 14px; }
+    .clock {
+      float: right;
+      border: 1px solid black;
+      padding: 5px;
+    }
+  </style>
+  <script>
+    // Show Clock
+    function updateClock() {
+      const clock = document.getElementById("clock");
+      const now = new Date();
+      clock.innerText = `Time: ${now.toLocaleTimeString()}`;
+    }
+    setInterval(updateClock, 1000);
+
+    // Print Form
+    function printForm() {
+      const gender = document.querySelector('input[name="gender"]:checked');
+      const country = document.getElementById("country").value;
+      const prefs = document.getElementsByName("pref");
+      let selectedPrefs = [];
+      for (let p of prefs) if (p.checked) selectedPrefs.push(p.value);
+      alert(`Gender: ${gender?.value || 'Not selected'}\nCountry: ${country}\nPreferences: ${selectedPrefs.join(", ")}`);
+    }
+
+    // Validation
+    function validateForm() {
+      let f = document.forms["myForm"];
+      let name = f["name"].value.trim();
+      let address = f["address"].value.trim();
+      let zip = f["zip"].value.trim();
+      let phone = f["phone"].value.trim();
+      let email = f["email"].value.trim();
+      let password = f["password"].value;
+      let confirm = f["confirm"].value;
+      let pan = f["pan"].value.trim();
+
+      if (!name) { alert("Name required"); f["name"].focus(); return false; }
+      if (name.length > 15) { alert("Name max 15 chars"); f["name"].focus(); return false; }
+
+      if (!address) { alert("Address required"); f["address"].focus(); return false; }
+
+      if (!zip || isNaN(zip) || zip.length > 6) {
+        alert("Invalid Zip"); f["zip"].focus(); return false;
+      }
+
+      if (f["country"].value == "select") {
+        alert("Select country"); f["country"].focus(); return false;
+      }
+
+      if (!f["gender"][0].checked && !f["gender"][1].checked) {
+        alert("Select gender"); return false;
+      }
+
+      let anyPref = Array.from(document.getElementsByName("pref")).some(p => p.checked);
+      if (!anyPref) { alert("Select at least one preference"); return false; }
+
+      if (!phone || isNaN(phone) || phone.length != 10) {
+        alert("Invalid phone"); f["phone"].focus(); return false;
+      }
+
+      let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert("Invalid email"); f["email"].focus(); return false;
+      }
+
+      let passRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
+      if (!passRegex.test(password)) {
+        alert("Password must have 8–15 chars with digit, letter, special char"); f["password"].focus(); return false;
+      }
+
+      if (password !== confirm) {
+        alert("Passwords do not match"); f["confirm"].focus(); return false;
+      }
+
+      let panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+      if (!panRegex.test(pan)) {
+        alert("Invalid PAN (e.g., ABCDE1234F)"); f["pan"].focus(); return false;
+      }
+
+      alert("Form submitted successfully!");
+      return true;
+    }
+  </script>
+</head>
+<body onload="updateClock()">
+  <form name="myForm" onsubmit="return validateForm()">
+    <div class="clock" id="clock"></div>
+    <h2>Test JavaScript Form Validataion</h2>
+
+    Name* <input type="text" name="name"><br><br>
+    Address* <textarea name="address"></textarea><br><br>
+    Zip Code* <input type="text" name="zip"><br><br>
+
+    Country* 
+    <select name="country" id="country">
+      <option value="select">Please select...</option>
+      <option value="India">India</option>
+      <option value="USA">USA</option>
+    </select><br><br>
+
+    Gender* 
+    <input type="radio" name="gender" value="Male"> Male 
+    <input type="radio" name="gender" value="Female"> Female<br><br>
+
+    Preferences* 
+    <input type="checkbox" name="pref" value="Red"> Red 
+    <input type="checkbox" name="pref" value="Green"> Green 
+    <input type="checkbox" name="pref" value="Blue"> Blue<br><br>
+
+    Phone* <input type="text" name="phone"><br><br>
+    Email* <input type="text" name="email"><br><br>
+    Password* <input type="password" name="password"><br><br>
+    Verify Password* <input type="password" name="confirm"><br><br>
+
+    PAN No: <input type="text" name="pan"><br><br>
+
+    <input type="submit" value="SEND"> 
+    <input type="reset" value="CLEAR">
+    <button type="button" onclick="printForm()">Print Info</button>
+  </form>
+</body>
+</html>

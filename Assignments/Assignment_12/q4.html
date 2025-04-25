@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Charts with Plotly.js</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
+    }
+    h2 {
+      text-align: center;
+    }
+    .chart-container {
+      margin: 40px auto;
+      width: 80%;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Charts using Plotly.js</h2>
+
+  <div class="chart-container">
+    <div id="barChart"></div>
+  </div>
+
+  <div class="chart-container">
+    <div id="lineChart"></div>
+  </div>
+
+  <div class="chart-container">
+    <div id="pieChart"></div>
+  </div>
+
+  <div class="chart-container">
+    <div id="donutChart"></div>
+  </div>
+
+  <script>
+    // Sample Data
+    const categories = ['Math', 'Science', 'English', 'History', 'Art'];
+    const scores = [85, 90, 78, 88, 95];
+    const colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd'];
+
+    // Bar Chart
+    Plotly.newPlot('barChart', [{
+      x: categories,
+      y: scores,
+      type: 'bar',
+      marker: { color: colors }
+    }], {
+      title: 'Student Scores in Subjects (Bar Chart)',
+      xaxis: { title: 'Subjects' },
+      yaxis: { title: 'Scores' },
+    });
+
+    // Line Chart
+    Plotly.newPlot('lineChart', [{
+      x: categories,
+      y: scores,
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { color: '#17becf', width: 3 },
+      marker: { color: colors, size: 10 }
+    }], {
+      title: 'Student Scores Trend (Line Chart)',
+      xaxis: { title: 'Subjects' },
+      yaxis: { title: 'Scores' },
+    });
+
+    // Pie Chart
+    Plotly.newPlot('pieChart', [{
+      labels: categories,
+      values: scores,
+      type: 'pie',
+      marker: { colors: colors },
+      textinfo: 'label+percent',
+      insidetextorientation: 'radial'
+    }], {
+      title: 'Score Distribution (Pie Chart)',
+      showlegend: true
+    });
+
+    // Donut Chart
+    Plotly.newPlot('donutChart', [{
+      labels: categories,
+      values: scores,
+      type: 'pie',
+      hole: 0.4,
+      marker: { colors: colors },
+      textinfo: 'label+value'
+    }], {
+      title: 'Score Distribution (Donut Chart)',
+      showlegend: true
+    });
+  </script>
+
+</body>
+</html>
